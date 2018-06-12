@@ -1,10 +1,10 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var cors = require('cors');
 var app = express();
 
 var response = {};
 
-//10 employees loaded on page load
 var employee = [{
 		id: 51518422,
 		firstName: 'Libu',
@@ -13,14 +13,14 @@ var employee = [{
 		position: 'Senior Software Engineer'
 	},{
 		id: 51680750,
-		firstName: 'Gautham',
-		lastName: 'Krishna',
-		email: 'gauthamkrishna@hcl.com',
+		firstName: 'Aruni',
+		lastName: 'Mishra',
+		email: 'arunimishra@hcl.com',
 		position: 'Associate'
 	},{
 		id: 51680759,
 		firstName: 'Mahesh',
-		lastName: 'Kmar',
+		lastName: 'Kumar',
 		email: 'maheshkumar@hcl.com',
 		position: 'Senior-Consultant'
 	},{
@@ -31,9 +31,9 @@ var employee = [{
 		position: 'Senior Associate'
 	},{
 		id: 51680755,
-		firstName: 'Anitha',
+		firstName: 'Satish',
 		lastName: 'reddy',
-		email: 'anithareddy@hcl.com',
+		email: 'satishreddy@hcl.com',
 		position: 'Consultant'
 	},{
 		id: 51680556,
@@ -74,13 +74,14 @@ var PORT = process.env.PORT || 3000;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
-
+// app.use(cors(corsOptions));
+app.use(cors());
 
 /**
  * ToDoList
  */
 app.get('/todolist', function (req, res) {
-	res.header("Access-Control-Allow-Origin", "*");
+	res.header("Access-Control-Allow-Origin", "http://localhost:4200");
 	res.send({ data : employee });
 });
 
@@ -136,6 +137,7 @@ app.post('/modify', function (req, res) {
  * Login
  */
 app.post('/login', function (req, res) {
+	res.header("Access-Control-Allow-Origin", "*");
 	response = req.body;
 	userAttempt = 0;
 	if(response.userName === 'admin' && response.password === 'admin') {
