@@ -1,0 +1,42 @@
+  <div class="container-fluid ">
+	<h3>{{buttonLabel}} Employee</h3>
+    <form [formGroup]="employeeForm" class="form-horizontal"  (submit)="submit()">
+      <div class="form-group">
+        <label class="control-label col-sm-2 float-left"> SAP ID </label>
+        <div class="col-sm-8">
+    	  <input  type="text" formControlName="id" id="id" [(ngModel)]="employeeForm.id"/>
+       </div>
+       </div>
+       
+       <div class="form-group">
+       <label class="control-label col-sm-2 float-left"> First Name </label>
+        <div class="col-sm-8">
+        <input type="text" formControlName="firstName" id="firstName" [(ngModel)]="employeeForm.firstName"/>
+             </div>
+       </div>
+      
+       <div class="form-group">
+      <label class="control-label col-sm-2 float-left"> Last Name </label>
+    	<div class="col-sm-8">
+      <input type="text" formControlName="lastName" id="lastName" [(ngModel)]="employeeForm.lastName"/>
+                   </div>
+       </div>
+      
+
+       <div class="form-group">
+      <label class="control-label col-sm-2 float-left"> Email </label>
+      <div class="col-sm-8">
+    	<input type="text" formControlName="email" id="email" [(ngModel)]="employeeForm.email"/>
+                        </div>
+       </div>
+
+       <div class="form-group">
+      <label class="control-label col-sm-2 float-left"> Position </label>
+      <div class="col-sm-8">
+    	<input type="text" formControlName="position" id="position" [(ngModel)]="employeeForm.position"/>
+                               </div>
+       </div>
+       
+        <button type="submit" [disabled]="!employeeForm.valid" class="btn btn-primary" >{{buttonLabel}}</button>
+    </form>
+</div>

@@ -1,0 +1,26 @@
+<div class="container-fluid">
+<button (click)="add()" class="btn btn-primary addEmployee">Add</button>
+<table class="table table-hover">
+  <tr>
+    <th>SAP Id</th>
+    <th>Firt Name</th>
+    <th>last Name</th>
+    <th>Email</th>
+    <th>Position</th>
+    <th>Action</th>
+  </tr>
+  <tr *ngFor="let employee of employeeDetails?.data">
+    <td> {{employee.id}} </td>
+    <td> {{employee.firstName}} </td>
+    <td> {{employee.lastName}} </td>
+    <td> {{employee.email}} </td>
+    <td> {{employee.position}} </td>
+    <td> <button (click)="edit(employee.id)" class="btn btn-default">Edit</button> 
+         <button (click)="delete(employee.id)" class="btn btn-danger">Delete</button>
+    </td>
+  </tr>
+  <tr *ngIf="employeeDetails?.data.length===0" colspan="6" >
+    No data Found.
+  </tr>
+</table>
+</div>
